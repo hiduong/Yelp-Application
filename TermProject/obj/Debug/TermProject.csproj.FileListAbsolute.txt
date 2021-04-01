@@ -36,3 +36,43 @@ C:\Users\GGHyper\Desktop\Milestone 2\TermProject\obj\Debug\TermProject.csproj.Co
 C:\Users\GGHyper\Desktop\Milestone 2\TermProject\obj\Debug\TermProject.csproj.CopyComplete
 C:\Users\GGHyper\Desktop\Milestone 2\TermProject\obj\Debug\TermProject.exe
 C:\Users\GGHyper\Desktop\Milestone 2\TermProject\obj\Debug\TermProject.pdb
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\TermProject.exe.config
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\TermProject.exe
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\TermProject.pdb
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\Npgsql.dll
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Buffers.dll
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Memory.dll
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Text.Json.dll
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Threading.Channels.dll
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.ValueTuple.dll
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\Npgsql.xml
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Buffers.xml
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Memory.xml
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Text.Json.xml
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Threading.Channels.xml
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\GGHyper\Desktop\cs451\TermProject\bin\Debug\System.ValueTuple.xml
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\TermProject.csprojAssemblyReference.cache
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\MainWindow.g.cs
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\App.g.cs
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\TermProject_MarkupCompile.cache
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\TermProject_MarkupCompile.lref
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\MainWindow.baml
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\TermProject.g.resources
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\TermProject.Properties.Resources.resources
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\TermProject.csproj.GenerateResource.cache
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\TermProject.csproj.CoreCompileInputs.cache
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\TermProject.csproj.CopyComplete
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\TermProject.exe
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\TermProject.pdb
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\Tips.g.cs
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\Tips.baml
