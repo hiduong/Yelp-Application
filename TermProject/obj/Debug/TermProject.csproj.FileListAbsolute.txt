@@ -76,3 +76,5 @@ C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\TermProject.exe
 C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\TermProject.pdb
 C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\Tips.g.cs
 C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\Tips.baml
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\UserInformation.g.cs
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\UserInformation.baml

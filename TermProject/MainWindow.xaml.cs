@@ -21,6 +21,9 @@ namespace TermProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string currentUserName = "Mary";
+        private string currentUserID = "he7YBVPGxkIK40zZm_Gh2w";
+
         public class Business
         {
             public string bid { get; set; }
@@ -43,7 +46,7 @@ namespace TermProject
 
         private string buildConnectionString()
         {
-            return "Host = localhost; Username = postgres; Database = yelpdb; password=11587750";
+            return "Host = localhost; Username = postgres; Database = yelpdb2; password=11587750";
         }
 
         private void executeQuery(string sqlstr, Action<NpgsqlDataReader> myf)
@@ -277,10 +280,42 @@ namespace TermProject
                 Business B = ResultsGrid.Items[ResultsGrid.SelectedIndex] as Business;
                 if ((B.bid != null) && (B.bid.ToString().CompareTo("") != 0))
                 {
-                    Tips tipsWindow = new Tips(B.bid.ToString(), B.name.ToString());
+                    Tips tipsWindow = new Tips(B.bid.ToString(), B.name.ToString(), this.currentUserID);
                     tipsWindow.Show();
+                    ResultsGrid.SelectedIndex = -1;
                 }
             }
+        }
+
+        private void AddUserID(NpgsqlDataReader R)
+        {
+            UserIDBox.Items.Add(R.GetString(0));
+        }
+
+        // handler to handle text change for searching user by name
+        private void textChangedEventHandler(object sender, TextChangedEventArgs args)
+        {
+            UserIDBox.Items.Clear();
+            string sqlstr = "SELECT user_id FROM yelpuser WHERE username = '" + SearchUserBox.Text + "'";
+            executeQuery(sqlstr, AddUserID);
+        }
+
+
+        private void SetUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserIDBox.SelectedIndex > -1)
+            {
+                this.currentUserID = UserIDBox.SelectedItem.ToString();
+                CurrentUserID.Content = this.currentUserID;
+                this.currentUserName = SearchUserBox.Text;
+                CurrentUserName.Content = this.currentUserName;
+            }
+        }
+
+        private void ViewUserInfo_Click(object sender, RoutedEventArgs e)
+        {
+            UserInformation UserWindow = new UserInformation(this.currentUserID);
+            UserWindow.Show();
         }
     }
 }

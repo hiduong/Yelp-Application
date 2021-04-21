@@ -29,18 +29,20 @@ namespace TermProject
         }
 
         private string bid = "";
-        public Tips(string bid, string bname)
+        private string uid = "";
+        public Tips(string bid, string bname, string uid)
         {
             InitializeComponent();
             this.bid = String.Copy(bid);
             this.Title = "Tips by Users for " + bname;
+            this.uid = uid;
             AddColumns2Grid();
             LoadTips();
         }
 
         private string buildConnectionString()
         {
-            return "Host = localhost; Username = postgres; Database = yelpdb; password=11587750";
+            return "Host = localhost; Username = postgres; Database = yelpdb2; password=11587750";
         }
 
         private void executeQuery(string sqlstr, Action<NpgsqlDataReader> myf)
@@ -117,7 +119,7 @@ namespace TermProject
 
         private void AddTipButton_Click(object sender, RoutedEventArgs e)
         {
-            string sqlstr = "INSERT INTO tip(business_id, tipdate, likecount, tiptext, user_id) VALUES('"+this.bid+ "',CURRENT_TIMESTAMP,0,'" + TextBox.Text.ToString()+"','jRyO2V1pA4CdVVqCIOPc1Q');";
+            string sqlstr = "INSERT INTO tip(business_id, tipdate, likecount, tiptext, user_id) VALUES('"+this.bid+ "',CURRENT_TIMESTAMP,0,'" + TextBox.Text.ToString()+"','"+this.uid+"');";
             executeQuery(sqlstr, InsertTip);
             TipsGrid.Items.Clear();
             LoadTips();
