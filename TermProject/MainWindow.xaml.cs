@@ -32,6 +32,7 @@ namespace TermProject
             public string city { get; set; }
             public string address { get; set; }
             public string zipcode { get; set; }
+            public string distance { get; set; }
             public string rating { get; set; }
             public string tipcount { get; set; }
             public string checkincount { get; set; }
@@ -46,7 +47,7 @@ namespace TermProject
 
         private string buildConnectionString()
         {
-            return "Host = localhost; Username = postgres; Database = yelpdb2; password=11587750";
+            return "Host = localhost; Username = postgres; Database = yelpdbA; password=Potass1osql";
         }
 
         private void executeQuery(string sqlstr, Action<NpgsqlDataReader> myf)
@@ -110,6 +111,12 @@ namespace TermProject
             col5.Binding = new Binding("zipcode");
             col5.Width = 60;
             ResultsGrid.Columns.Add(col5);
+
+            DataGridTextColumn colDist = new DataGridTextColumn();
+            colDist.Header = "Distance (mi.)";
+            colDist.Binding = new Binding("distance");
+            colDist.Width = 100;
+            ResultsGrid.Columns.Add(colDist);
 
             DataGridTextColumn col6 = new DataGridTextColumn();
             col6.Header = "Stars";
@@ -237,7 +244,7 @@ namespace TermProject
 
         private void AddGridRow(NpgsqlDataReader R)
         {
-            ResultsGrid.Items.Add(new Business() { name = R.GetString(0), address = R.GetString(1), city = R.GetString(2), state = R.GetString(3), zipcode = R.GetString(4), rating = R.GetDouble(5).ToString(), tipcount = R.GetInt16(6).ToString(), checkincount = R.GetInt16(7).ToString(), bid = R.GetString(8) });
+            ResultsGrid.Items.Add(new Business() { name = R.GetString(0), address = R.GetString(1), city = R.GetString(2), state = R.GetString(3), zipcode = R.GetString(4), distance = R.GetDouble(5).ToString(), rating = R.GetDouble(6).ToString(), tipcount = R.GetInt16(7).ToString(), checkincount = R.GetInt16(8).ToString(), bid = R.GetString(9) });
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -262,12 +269,13 @@ namespace TermProject
                         }
                     }
                     string categoryquery = temp.Remove(temp.Length - 5, 5);
-                    string sqlstr = "SELECT distinct business.businessname, address, city, state, zipcode, rating, tipcount, checkincount, business.business_id FROM (SELECT distinct businessname, array_to_string(array_agg(categoryname), ' , ') AS categories FROM(SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id = hascategory.business_id GROUP BY businessname) temp1, business WHERE temp1.businessname = business.businessname AND city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "' AND " + categoryquery;
+                    System.Windows.MessageBox.Show(categoryquery);
+                    string sqlstr = "SELECT distinct business.businessname, address, city, state, zipcode, ROUND(CAST(SQRT(POWER((business.latitude - my_user.latitude) * 69.2, 2) + POWER((business.longitude - my_user.longitude) * 69.2, 2)) as numeric), 3) as distance, rating, tipcount, checkincount, business.business_id FROM (SELECT distinct businessname, array_to_string(array_agg(categoryname), ' , ') AS categories FROM(SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id = hascategory.business_id GROUP BY businessname) temp1, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, business WHERE temp1.businessname = business.businessname AND city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "' AND " + categoryquery;
                     executeQuery(sqlstr, AddGridRow);
                 }
                 else
                 {
-                    string sqlstr = "SELECT distinct businessname, address, city, state, zipcode, rating, tipcount, checkincount, temp.business_id FROM (SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id=hascategory.business_id";
+                    string sqlstr = "SELECT distinct businessname, address, city, state, zipcode, ROUND(CAST(SQRT(POWER((temp.latitude - my_user.latitude) * 69.2, 2) + POWER((temp.longitude - my_user.longitude) * 69.2, 2)) as numeric), 3) as distance, rating, tipcount, checkincount, temp.business_id FROM (SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, hascategory WHERE temp.business_id=hascategory.business_id";
                     executeQuery(sqlstr, AddGridRow);
                 }
             }
