@@ -269,7 +269,6 @@ namespace TermProject
                         }
                     }
                     string categoryquery = temp.Remove(temp.Length - 5, 5);
-                    System.Windows.MessageBox.Show(categoryquery);
                     string sqlstr = "SELECT distinct business.businessname, address, city, state, zipcode, ROUND(CAST(SQRT(POWER((business.latitude - my_user.latitude) * 69.2, 2) + POWER((business.longitude - my_user.longitude) * 69.2, 2)) as numeric), 3) as distance, rating, tipcount, checkincount, business.business_id FROM (SELECT distinct businessname, array_to_string(array_agg(categoryname), ' , ') AS categories FROM(SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id = hascategory.business_id GROUP BY businessname) temp1, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, business WHERE temp1.businessname = business.businessname AND city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "' AND " + categoryquery;
                     executeQuery(sqlstr, AddGridRow);
                 }
