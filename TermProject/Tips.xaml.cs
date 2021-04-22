@@ -26,6 +26,7 @@ namespace TermProject
             public string name { get; set; }
             public string likes { get; set; }
             public string text { get; set; }
+            public string tipUid { get; set; }
         }
 
         private string bid = "";
@@ -75,6 +76,32 @@ namespace TermProject
             }
         }
 
+        private void executeUpdate(string sqlstr)
+        {
+            using (var connection = new NpgsqlConnection(buildConnectionString()))
+            {
+                connection.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = connection;
+                    cmd.CommandText = sqlstr;
+                    try
+                    {
+                        var updater = cmd.ExecuteNonQuery();
+                    }
+                    catch (NpgsqlException ex)
+                    {
+                        Console.WriteLine(ex.Message.ToString());
+                        System.Windows.MessageBox.Show("SQL Error - " + ex.Message.ToString());
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+        }
+
         private void AddColumns2Grid()
         {
             DataGridTextColumn col1 = new DataGridTextColumn();
@@ -104,12 +131,12 @@ namespace TermProject
 
         private void AddTipGrid(NpgsqlDataReader R)
         {
-            TipsGrid.Items.Add(new BusinessTips() { date = R.GetDateTime(0).ToString(), name = R.GetString(1).ToString(), likes = R.GetInt16(2).ToString(), text = R.GetString(3).ToString() });
+            TipsGrid.Items.Add(new BusinessTips() { date = R.GetDateTime(0).ToString(), name = R.GetString(1).ToString(), likes = R.GetInt16(2).ToString(), text = R.GetString(3).ToString(), tipUid = R.GetString(4) });
         }
 
         private void LoadTips()
         {
-            string sqlstr = "SELECT tipdate, username, likecount, tiptext FROM (SELECT business_id, tipdate, username, likecount, tiptext FROM yelpuser, tip WHERE yelpuser.user_id = tip.user_id) temp WHERE business_id='" + this.bid +  "'";
+            string sqlstr = "SELECT tipdate, username, likecount, tiptext, user_id FROM (SELECT business_id, tipdate, username, likecount, tiptext, tip.user_id FROM yelpuser, tip WHERE yelpuser.user_id = tip.user_id) temp WHERE business_id='" + this.bid +  "' ORDER BY likecount DESC, username";
             executeQuery(sqlstr, AddTipGrid);
         }
 
@@ -121,6 +148,31 @@ namespace TermProject
         {
             string sqlstr = "INSERT INTO tip(business_id, tipdate, likecount, tiptext, user_id) VALUES('"+this.bid+ "',CURRENT_TIMESTAMP,0,'" + TextBox.Text.ToString()+"','"+this.uid+"');";
             executeQuery(sqlstr, InsertTip);
+            TipsGrid.Items.Clear();
+            LoadTips();
+        }
+
+        private void LikeTipButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            // Need Current user - uid is userid
+            // Also need to check if a tip is selected
+
+            // Simply update the tip like count, trigger will handle user tiplike count
+            
+            if (TipsGrid.SelectedIndex > -1)
+            {
+                BusinessTips T = TipsGrid.Items[TipsGrid.SelectedIndex] as BusinessTips;
+                string sqlstr = "UPDATE tip SET likecount = likecount + 1 WHERE business_id = '" + bid + "' AND user_id = '" + T.tipUid + "' AND tipdate = '" + T.date + "'";
+                // Turns out this doesn't work if you have your system time set to military time ONLY FOR new tips
+                //System.Windows.MessageBox.Show(sqlstr);
+                executeUpdate(sqlstr);
+            }
+
+            // DO NOT NEED TO RESET MAIN VIEW, no like count there
+            //update views?
+            //MainWindow wnd = (MainWindow)Application.Current.MainWindow;
+            //wnd.SearchButton_Click(sender, e);
             TipsGrid.Items.Clear();
             LoadTips();
         }
