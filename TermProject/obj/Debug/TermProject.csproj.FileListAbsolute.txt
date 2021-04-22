@@ -78,3 +78,45 @@ C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\Tips.g.cs
 C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\Tips.baml
 C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\UserInformation.g.cs
 C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\UserInformation.baml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\TermProject.exe.config
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\TermProject.exe
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\TermProject.pdb
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\Npgsql.dll
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Buffers.dll
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Memory.dll
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Numerics.Vectors.dll
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Text.Encodings.Web.dll
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Text.Json.dll
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Threading.Channels.dll
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Threading.Tasks.Extensions.dll
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.ValueTuple.dll
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\Npgsql.xml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Buffers.xml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Memory.xml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Numerics.Vectors.xml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Text.Encodings.Web.xml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Text.Json.xml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Threading.Channels.xml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.Threading.Tasks.Extensions.xml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\bin\Debug\System.ValueTuple.xml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\TermProject.csprojAssemblyReference.cache
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\MainWindow.g.cs
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\Tips.g.cs
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\UserInformation.g.cs
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\App.g.cs
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\TermProject_MarkupCompile.cache
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\TermProject_MarkupCompile.lref
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\MainWindow.baml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\Tips.baml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\UserInformation.baml
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\TermProject.g.resources
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\TermProject.Properties.Resources.resources
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\TermProject.csproj.GenerateResource.cache
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\TermProject.csproj.CoreCompileInputs.cache
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\TermProject.csproj.CopyComplete
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\TermProject.exe
+B:\Documents\School\WSU\Spring 2021\CS 451 Introduction to Database Systems\Term Project\Milestone3\cs451\TermProject\obj\Debug\TermProject.pdb

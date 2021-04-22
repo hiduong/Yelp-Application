@@ -49,6 +49,7 @@ namespace TermProject
         // properties : username, business, text, date all strings
         public class FriendsTips
         {
+            
         }
 
         public UserInformation(string uid)
@@ -101,12 +102,64 @@ namespace TermProject
         // TODO : Implement method to add columns to the friends data grid
         private void AddColumns2FriendGrid()
         {
+            DataGridTextColumn col1 = new DataGridTextColumn();
+            col1.Header = "Name";
+            col1.Binding = new Binding("name");
+            col1.Width = 80;
+            FriendsDataGrid.Columns.Add(col1);
+
+            DataGridTextColumn col2 = new DataGridTextColumn();
+            col2.Header = "TotalLikes";
+            col2.Binding = new Binding("totallikes");
+            col2.Width = 80;
+            FriendsDataGrid.Columns.Add(col2);
+
+            DataGridTextColumn col3 = new DataGridTextColumn();
+            col3.Header = "AvgStars";
+            col3.Binding = new Binding("avgstars");
+            col3.Width = 80;
+            FriendsDataGrid.Columns.Add(col3);
+
+            DataGridTextColumn col4 = new DataGridTextColumn();
+            col4.Header = "Yelping Since";
+            col4.Binding = new Binding("yelpingsince");
+            col4.Width = 200;
+            FriendsDataGrid.Columns.Add(col4);
         }
 
 
         // TODO : Implement method to add columns to the friends latest tips data grid
         private void AddColumns2FriendLatestTipsGrid()
         {
+            DataGridTextColumn col1 = new DataGridTextColumn();
+            col1.Header = "User Name";
+            col1.Binding = new Binding("username");
+            col1.Width = 80;
+            FriendsLatestTipsDataGrid.Columns.Add(col1);
+
+            DataGridTextColumn col2 = new DataGridTextColumn();
+            col2.Header = "Business";
+            col2.Binding = new Binding("business");
+            col2.Width = 150;
+            FriendsLatestTipsDataGrid.Columns.Add(col2);
+
+            DataGridTextColumn col3 = new DataGridTextColumn();
+            col3.Header = "City";
+            col3.Binding = new Binding("city");
+            col3.Width = 80;
+            FriendsLatestTipsDataGrid.Columns.Add(col3);
+
+            DataGridTextColumn col4 = new DataGridTextColumn();
+            col4.Header = "Text";
+            col4.Binding = new Binding("text");
+            col4.Width = 200;
+            FriendsLatestTipsDataGrid.Columns.Add(col4);
+
+            DataGridTextColumn col5 = new DataGridTextColumn();
+            col5.Header = "Date";
+            col5.Binding = new Binding("date");
+            col5.Width = 200;
+            FriendsLatestTipsDataGrid.Columns.Add(col5);
         }
 
 
