@@ -739,5 +739,77 @@ namespace TermProject
             attributeFilters[9] = false;
             SearchButton_Click(sender, e);
         }
+
+        private void breakfastCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            mealFilters[0] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void breakfastCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            mealFilters[0] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void lunchCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            mealFilters[1] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void lunchCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            mealFilters[1] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void brunchCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            mealFilters[2] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void brunchCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            mealFilters[2] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void dinnerCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            mealFilters[3] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void dinnerCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            mealFilters[3] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void dessertCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            mealFilters[4] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void dessertCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            mealFilters[4] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void lateNightCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            mealFilters[5] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void lateNightCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            mealFilters[5] = false;
+            SearchButton_Click(sender, e);
+        }
     }
 }

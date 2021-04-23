@@ -17,8 +17,9 @@
             <ColumnDefinition Width="67*"/>
             <ColumnDefinition Width="356*"/>
             <ColumnDefinition Width="290*"/>
-            <ColumnDefinition Width="348*"/>
-            <ColumnDefinition Width="97*"/>
+            <ColumnDefinition Width="347*"/>
+            <ColumnDefinition Width="26*"/>
+            <ColumnDefinition Width="71*"/>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
@@ -48,9 +49,9 @@
         <Label x:Name="CurrentUserName" Content="Mary" Grid.Column="2" HorizontalAlignment="Left" Margin="341,299,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="206" Grid.ColumnSpan="2"/>
         <Label x:Name="CurrentUserID" Content="he7YBVPGxkIK40zZm_Gh2w" Grid.Column="2" HorizontalAlignment="Left" Margin="342,329,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="206" Grid.ColumnSpan="2"/>
         <Button x:Name="ViewUserInfo" Content="View User Information" Grid.Column="2" HorizontalAlignment="Left" Margin="346,360,0,0" Grid.Row="1" VerticalAlignment="Top" Width="205" Grid.ColumnSpan="2" Height="25" Click="ViewUserInfo_Click"/>
-        <ComboBox x:Name="businessSortComboBox" Grid.Column="4" HorizontalAlignment="Left" Margin="290,288,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" Height="33" SelectionChanged="businessSortComboBox_SelectionChanged" Grid.ColumnSpan="2"/>
-        <Label x:Name="SearchResultLabel_Copy" Content="Sort By" HorizontalAlignment="Right" Margin="0,0,35,240" VerticalAlignment="Bottom" Height="26" Width="119" FontSize="16" FontFamily="Arial" FontWeight="Bold" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <ListBox x:Name="attributeListbox" Grid.Column="4" HorizontalAlignment="Left" Height="199" Margin="267,22,0,0" VerticalAlignment="Top" Width="166" Grid.Row="1" Grid.ColumnSpan="2">
+        <ComboBox x:Name="businessSortComboBox" Grid.Column="4" HorizontalAlignment="Left" Margin="290,288,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" Height="33" SelectionChanged="businessSortComboBox_SelectionChanged" Grid.ColumnSpan="3"/>
+        <Label x:Name="SearchResultLabel_Copy" Content="Sort By" HorizontalAlignment="Right" Margin="0,0,35,240" VerticalAlignment="Bottom" Height="26" Width="119" FontSize="16" FontFamily="Arial" FontWeight="Bold" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <ListBox x:Name="attributeListbox" Grid.Column="4" HorizontalAlignment="Left" Height="199" Margin="267,22,0,0" VerticalAlignment="Top" Width="166" Grid.Row="1" Grid.ColumnSpan="3">
             <CheckBox x:Name="creditcardCheckbox" Content="Accepts Credit Cards" Checked="creditcardCheckbox_Checked" Unchecked="creditcardCheckbox_Unchecked"/>
             <CheckBox x:Name="reservationCheckbox" Content="Takes Reservations" Checked="reservationCheckbox_Checked" Unchecked="reservationCheckbox_Unchecked"/>
             <CheckBox x:Name="wheelchairCheckbox" Content="Wheelchair Accessible" Checked="wheelchairCheckbox_Checked" Unchecked="wheelchairCheckbox_Unchecked"/>
@@ -68,13 +69,13 @@
             <CheckBox x:Name="price3Checkbox" Content="$$$" Checked="price3Checkbox_Checked" Unchecked="price3Checkbox_Unchecked"/>
             <CheckBox x:Name="price4Checkbox" Content="$$$$" Checked="price4Checkbox_Checked" Unchecked="price4Checkbox_Unchecked"/>
         </ListBox>
-        <ListBox x:Name="mealListBox" Grid.Column="4" HorizontalAlignment="Left" Height="125" Margin="337,-52,0,0" VerticalAlignment="Top" Width="97" Grid.ColumnSpan="2" Grid.RowSpan="2">
-            <CheckBox x:Name="breakfastCheckbox" Content="Breakfast"/>
-            <CheckBox x:Name="lunchCheckbox" Content="Lunch"/>
-            <CheckBox x:Name="brunchCheckbox" Content="Brunch"/>
-            <CheckBox x:Name="dinnerCheckbox" Content="Dinner"/>
-            <CheckBox x:Name="dessertCheckbox" Content="Dessert"/>
-            <CheckBox x:Name="lateNightCheckbox" Content="Late Night"/>
+        <ListBox x:Name="mealListBox" Grid.Column="4" HorizontalAlignment="Left" Height="125" Margin="337,-52,0,0" VerticalAlignment="Top" Width="97" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <CheckBox x:Name="breakfastCheckbox" Content="Breakfast" Checked="breakfastCheckbox_Checked" Unchecked="breakfastCheckbox_Unchecked"/>
+            <CheckBox x:Name="lunchCheckbox" Content="Lunch" Checked="lunchCheckbox_Checked" Unchecked="lunchCheckbox_Unchecked"/>
+            <CheckBox x:Name="brunchCheckbox" Content="Brunch" Checked="brunchCheckbox_Checked" Unchecked="brunchCheckbox_Unchecked"/>
+            <CheckBox x:Name="dinnerCheckbox" Content="Dinner" Checked="dinnerCheckbox_Checked" Unchecked="dinnerCheckbox_Unchecked"/>
+            <CheckBox x:Name="dessertCheckbox" Content="Dessert" Checked="dessertCheckbox_Checked" Unchecked="dessertCheckbox_Unchecked"/>
+            <CheckBox x:Name="lateNightCheckbox" Content="Late Night" Checked="lateNightCheckbox_Checked" Unchecked="lateNightCheckbox_Unchecked"/>
         </ListBox>
 
     </Grid>
