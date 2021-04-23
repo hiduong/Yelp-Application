@@ -46,7 +46,7 @@ namespace TermProject
 
         private string buildConnectionString()
         {
-            return "Host = localhost; Username = postgres; Database = yelpdb; password=Adasadas6!!!";
+            return "Host = localhost; Username = postgres; Database = yelpdb; password= 123 ";
         }
 
         private void executeQuery(string sqlstr, Action<NpgsqlDataReader> myf)
