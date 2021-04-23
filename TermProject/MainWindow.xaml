@@ -47,6 +47,8 @@
         <Label x:Name="CurrentUserName" Content="Mary" Grid.Column="2" HorizontalAlignment="Left" Margin="340.657,299.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="206" Grid.ColumnSpan="2"/>
         <Label x:Name="CurrentUserID" Content="he7YBVPGxkIK40zZm_Gh2w" Grid.Column="2" HorizontalAlignment="Left" Margin="341.657,329.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="206" Grid.ColumnSpan="2"/>
         <Button x:Name="ViewUserInfo" Content="View User Information" Grid.Column="2" HorizontalAlignment="Left" Margin="345.657,360.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="205" Grid.ColumnSpan="2" Height="25" Click="ViewUserInfo_Click"/>
+        <ComboBox x:Name="businessSortComboBox" Grid.Column="4" HorizontalAlignment="Left" Margin="290,288,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" Height="33" SelectionChanged="businessSortComboBox_SelectionChanged"/>
+        <Label x:Name="SearchResultLabel_Copy" Content="Sort By" HorizontalAlignment="Right" Margin="0,0,35,240" VerticalAlignment="Bottom" Height="26" Width="119" FontSize="16" FontFamily="Arial" FontWeight="Bold" Grid.Column="4" Grid.Row="1"/>
 
     </Grid>
 </Window>

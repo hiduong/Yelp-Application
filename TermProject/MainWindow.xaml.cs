@@ -43,6 +43,7 @@ namespace TermProject
             InitializeComponent();
             AddState();
             AddColumns2Grid();
+            populateSortMethods();
         }
 
         private string buildConnectionString()
@@ -272,7 +273,7 @@ namespace TermProject
                     //Euclidean
                     //string sqlstr = "SELECT distinct business.businessname, address, city, state, zipcode, ROUND(CAST(SQRT(POWER((business.latitude - my_user.latitude) * 69.2, 2) + POWER((business.longitude - my_user.longitude) * 69.2, 2)) as numeric), 3) as distance, rating, tipcount, checkincount, business.business_id FROM (SELECT distinct businessname, array_to_string(array_agg(categoryname), ' , ') AS categories FROM(SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id = hascategory.business_id GROUP BY businessname) temp1, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, business WHERE temp1.businessname = business.businessname AND city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "' AND " + categoryquery;
                     //Haversine
-                    string sqlstr = "SELECT distinct business.businessname, address, city, state, zipcode, ROUND(CAST(3958.8 * 2.0 * ASIN(SQRT(POWER(SIN(RADIANS(business.latitude - my_user.latitude) / 2.0), 2) + COS(RADIANS(business.latitude)) * COS(RADIANS(my_user.latitude)) * POWER(SIN(RADIANS(business.longitude - my_user.longitude) / 2.0), 2))) as numeric), 3) as distance, rating, tipcount, checkincount, business.business_id FROM (SELECT distinct businessname, array_to_string(array_agg(categoryname), ' , ') AS categories FROM(SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id = hascategory.business_id GROUP BY businessname) temp1, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, business WHERE temp1.businessname = business.businessname AND city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "' AND " + categoryquery;
+                    string sqlstr = "SELECT distinct business.businessname, address, city, state, zipcode, ROUND(CAST(3958.8 * 2.0 * ASIN(SQRT(POWER(SIN(RADIANS(business.latitude - my_user.latitude) / 2.0), 2) + COS(RADIANS(business.latitude)) * COS(RADIANS(my_user.latitude)) * POWER(SIN(RADIANS(business.longitude - my_user.longitude) / 2.0), 2))) as numeric), 3) as distance, rating, tipcount, checkincount, business.business_id FROM (SELECT distinct businessname, array_to_string(array_agg(categoryname), ' , ') AS categories FROM(SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id = hascategory.business_id GROUP BY businessname) temp1, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, business WHERE temp1.businessname = business.businessname AND city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "' AND " + categoryquery + " " + getBusinessSort(true);
                     executeQuery(sqlstr, AddGridRow);
                 }
                 else
@@ -280,7 +281,7 @@ namespace TermProject
                     //Euclidean
                     //string sqlstr = "SELECT distinct businessname, address, city, state, zipcode, ROUND(CAST(SQRT(POWER((temp.latitude - my_user.latitude) * 69.2, 2) + POWER((temp.longitude - my_user.longitude) * 69.2, 2)) as numeric), 3) as distance, rating, tipcount, checkincount, temp.business_id FROM (SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, hascategory WHERE temp.business_id=hascategory.business_id";
                     //Haversine
-                    string sqlstr = "SELECT distinct businessname, address, city, state, zipcode, ROUND(CAST(3958.8 * 2.0 * ASIN(SQRT(POWER(SIN(RADIANS(temp.latitude - my_user.latitude) / 2.0), 2) + COS(RADIANS(temp.latitude)) * COS(RADIANS(my_user.latitude)) * POWER(SIN(RADIANS(temp.longitude - my_user.longitude) / 2.0), 2))) as numeric), 3) as distance, rating, tipcount, checkincount, temp.business_id FROM (SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, hascategory WHERE temp.business_id=hascategory.business_id";
+                    string sqlstr = "SELECT distinct businessname, address, city, state, zipcode, ROUND(CAST(3958.8 * 2.0 * ASIN(SQRT(POWER(SIN(RADIANS(temp.latitude - my_user.latitude) / 2.0), 2) + COS(RADIANS(temp.latitude)) * COS(RADIANS(my_user.latitude)) * POWER(SIN(RADIANS(temp.longitude - my_user.longitude) / 2.0), 2))) as numeric), 3) as distance, rating, tipcount, checkincount, temp.business_id FROM (SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, hascategory WHERE temp.business_id=hascategory.business_id " + getBusinessSort(false);
                     executeQuery(sqlstr, AddGridRow);
                 }
             }
@@ -331,6 +332,83 @@ namespace TermProject
         {
             UserInformation UserWindow = new UserInformation(this.currentUserID);
             UserWindow.Show();
+        }
+
+        private void populateSortMethods()
+        {
+            businessSortComboBox.Items.Add("Business Name");
+            businessSortComboBox.Items.Add("Highest Rating");
+            businessSortComboBox.Items.Add("Most Tips");
+            businessSortComboBox.Items.Add("Most Check-Ins");
+            businessSortComboBox.Items.Add("Nearest");
+
+            businessSortComboBox.SelectedValue = "Business Name";
+        }
+
+        private string getPriceFilters()
+        {
+            //Check through tick boxes and append a WHERE condition for each ticked
+            return "";
+        }
+
+        private string getAttributeFilters()
+        {
+            return "";
+        }
+
+        private string getMealFilters()
+        {
+            return "";
+        }
+
+        private string getBusinessSort(bool categoryQuery)
+        {
+            //Check the drop down and return sorting method for ORDER BY()
+
+            string result = "ORDER BY ";
+
+            bool bFlag = false;
+
+            switch (businessSortComboBox.SelectedValue)
+            {
+                case "Business Name":
+                    bFlag = true;
+                    if (categoryQuery)
+                    {
+                        result += "business.businessname ASC";
+                    } else
+                    {
+                        result += "businessname ASC";
+                    }
+                    break;
+                case "Highest Rating":
+                    result += "rating DESC";
+                    break;
+                case "Most Tips":
+                    result += "tipcount DESC";
+                    break;
+                case "Most Check-Ins":
+                    result += "checkincount DESC";
+                    break;
+                case "Nearest":
+                    result += "distance ASC";
+                    break;
+            }
+
+            if (!bFlag)
+            {
+                if (categoryQuery)
+                    result += ", business.businessname ASC";
+                else
+                    result += ", businessname ASC";
+            }
+
+            return result;
+        }
+
+        private void businessSortComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SearchButton_Click(sender, e);
         }
     }
 }
