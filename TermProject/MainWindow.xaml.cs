@@ -24,6 +24,10 @@ namespace TermProject
         private string currentUserName = "Mary";
         private string currentUserID = "he7YBVPGxkIK40zZm_Gh2w";
 
+        private bool[] priceFilters;
+        private bool[] attributeFilters;
+        private bool[] mealFilters;
+
         public class Business
         {
             public string bid { get; set; }
@@ -44,6 +48,13 @@ namespace TermProject
             AddState();
             AddColumns2Grid();
             populateSortMethods();
+
+            priceFilters = new bool[4];
+            initBoolsFalse(priceFilters);
+            attributeFilters = new bool[10];
+            initBoolsFalse(attributeFilters);
+            mealFilters = new bool[6];
+            initBoolsFalse(mealFilters);
         }
 
         private string buildConnectionString()
@@ -273,7 +284,7 @@ namespace TermProject
                     //Euclidean
                     //string sqlstr = "SELECT distinct business.businessname, address, city, state, zipcode, ROUND(CAST(SQRT(POWER((business.latitude - my_user.latitude) * 69.2, 2) + POWER((business.longitude - my_user.longitude) * 69.2, 2)) as numeric), 3) as distance, rating, tipcount, checkincount, business.business_id FROM (SELECT distinct businessname, array_to_string(array_agg(categoryname), ' , ') AS categories FROM(SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id = hascategory.business_id GROUP BY businessname) temp1, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, business WHERE temp1.businessname = business.businessname AND city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "' AND " + categoryquery;
                     //Haversine
-                    string sqlstr = "SELECT distinct business.businessname, address, city, state, zipcode, ROUND(CAST(3958.8 * 2.0 * ASIN(SQRT(POWER(SIN(RADIANS(business.latitude - my_user.latitude) / 2.0), 2) + COS(RADIANS(business.latitude)) * COS(RADIANS(my_user.latitude)) * POWER(SIN(RADIANS(business.longitude - my_user.longitude) / 2.0), 2))) as numeric), 3) as distance, rating, tipcount, checkincount, business.business_id FROM (SELECT distinct businessname, array_to_string(array_agg(categoryname), ' , ') AS categories FROM(SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id = hascategory.business_id GROUP BY businessname) temp1, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, business WHERE temp1.businessname = business.businessname AND city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "' AND " + categoryquery + " " + getBusinessSort(true);
+                    string sqlstr = "SELECT distinct business.businessname, address, city, state, zipcode, ROUND(CAST(3958.8 * 2.0 * ASIN(SQRT(POWER(SIN(RADIANS(business.latitude - my_user.latitude) / 2.0), 2) + COS(RADIANS(business.latitude)) * COS(RADIANS(my_user.latitude)) * POWER(SIN(RADIANS(business.longitude - my_user.longitude) / 2.0), 2))) as numeric), 3) as distance, rating, tipcount, checkincount, business.business_id FROM (SELECT distinct businessname, array_to_string(array_agg(categoryname), ' , ') AS categories FROM(SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id = hascategory.business_id GROUP BY businessname) temp1, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, business WHERE temp1.businessname = business.businessname AND city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "' AND " + categoryquery + getAttributeSelections(true) + " " + getBusinessSort(true);
                     executeQuery(sqlstr, AddGridRow);
                 }
                 else
@@ -281,7 +292,7 @@ namespace TermProject
                     //Euclidean
                     //string sqlstr = "SELECT distinct businessname, address, city, state, zipcode, ROUND(CAST(SQRT(POWER((temp.latitude - my_user.latitude) * 69.2, 2) + POWER((temp.longitude - my_user.longitude) * 69.2, 2)) as numeric), 3) as distance, rating, tipcount, checkincount, temp.business_id FROM (SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, hascategory WHERE temp.business_id=hascategory.business_id";
                     //Haversine
-                    string sqlstr = "SELECT distinct businessname, address, city, state, zipcode, ROUND(CAST(3958.8 * 2.0 * ASIN(SQRT(POWER(SIN(RADIANS(temp.latitude - my_user.latitude) / 2.0), 2) + COS(RADIANS(temp.latitude)) * COS(RADIANS(my_user.latitude)) * POWER(SIN(RADIANS(temp.longitude - my_user.longitude) / 2.0), 2))) as numeric), 3) as distance, rating, tipcount, checkincount, temp.business_id FROM (SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, hascategory WHERE temp.business_id=hascategory.business_id " + getBusinessSort(false);
+                    string sqlstr = "SELECT distinct businessname, address, city, state, zipcode, ROUND(CAST(3958.8 * 2.0 * ASIN(SQRT(POWER(SIN(RADIANS(temp.latitude - my_user.latitude) / 2.0), 2) + COS(RADIANS(temp.latitude)) * COS(RADIANS(my_user.latitude)) * POWER(SIN(RADIANS(temp.longitude - my_user.longitude) / 2.0), 2))) as numeric), 3) as distance, rating, tipcount, checkincount, temp.business_id FROM (SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, hascategory WHERE temp.business_id=hascategory.business_id" + getAttributeSelections(false) + " " + getBusinessSort(false);
                     executeQuery(sqlstr, AddGridRow);
                 }
             }
@@ -408,6 +419,324 @@ namespace TermProject
 
         private void businessSortComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            SearchButton_Click(sender, e);
+        }
+
+
+        private static void initBoolsFalse(bool[] boolArr)
+        {
+            for(int i = 0; i < boolArr.Length; i++)
+            {
+                boolArr[i] = false;
+            }
+        }
+
+        private string getAttributeSelections(bool categoryQuery)
+        {
+            string result = " AND ";
+
+            string businessRef;
+
+            if (categoryQuery)
+            {
+                businessRef = "business.business_id";
+            } else
+            {
+                businessRef = "temp.business_id";
+            }
+
+            result += businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributename = ";
+
+            bool hasAttributeFilter = false;
+
+            int index = 0;
+
+            foreach (bool b in priceFilters)
+            {
+
+                if (b)
+                {
+                    if (hasAttributeFilter)
+                    {
+                        result += " GROUP BY business_id) AND " + businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributename = ";
+                    }
+                    switch (index)
+                    {
+                        case 0:
+                            result += "'RestaurantsPriceRange1'";
+                            break;
+                        case 1:
+                            result += "'RestaurantsPriceRange2'";
+                            break;
+                        case 2:
+                            result += "'RestaurantsPriceRange3'";
+                            break;
+                        case 3:
+                            result += "'RestaurantsPriceRange4'";
+                            break;
+                    }
+                    hasAttributeFilter = true;
+                }
+                index++;
+            }
+            index = 0;
+            foreach (bool b in attributeFilters)
+            {
+                if (b)
+                {
+                    if (hasAttributeFilter)
+                    {
+                        result += " GROUP BY business_id) AND " + businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributename = ";
+                    }
+                    switch (index)
+                    {
+                        case 0:
+                            result += "'BusinessAcceptsCreditCards'";
+                            break;
+                        case 1:
+                            result += "'RestaurantsReservations'";
+                            break;
+                        case 2:
+                            result += "'WheelchairAccessible'";
+                            break;
+                        case 3:
+                            result += "'OutdoorSeating'";
+                            break;
+                        case 4:
+                            result += "'GoodForKids'";
+                            break;
+                        case 5:
+                            result += "'RestaurantsGoodForGroups'";
+                            break;
+                        case 6:
+                            result += "'RestaurantsDelivery'";
+                            break;
+                        case 7:
+                            result += "'RestaurantsTakeOut'";
+                            break;
+                        case 8:
+                            result += "'WiFi'";
+                            break;
+                        case 9:
+                            result += "'BikeParking'";
+                            break;
+                    }
+                    hasAttributeFilter = true;
+                }
+                index++;
+            }
+            index = 0;
+            foreach (bool b in mealFilters)
+            {
+                if (b)
+                {
+                    if (hasAttributeFilter)
+                    {
+                        result += " GROUP BY business_id) AND " + businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributename = ";
+                    }
+                    switch (index)
+                    {
+                        case 0:
+                            result += "'breakfast'";
+                            break;
+                        case 1:
+                            result += "'lunch'";
+                            break;
+                        case 2:
+                            result += "'brunch'";
+                            break;
+                        case 3:
+                            result += "'dinner'";
+                            break;
+                        case 4:
+                            result += "'dessert'";
+                            break;
+                        case 5:
+                            result += "'latenight'";
+                            break;
+                    }
+                    hasAttributeFilter = true;
+                }
+                index++;
+            }
+
+            if (!hasAttributeFilter)
+            {
+                return "";
+            }
+
+            result += " GROUP BY business_id)";
+            
+            return result;
+
+        }
+
+        // Price Checkbox Handlers
+        private void price1Checkbox_Checked(object sender, RoutedEventArgs e)
+        {
+            priceFilters[0] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void price1Checkbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            priceFilters[0] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void price2Checkbox_Checked(object sender, RoutedEventArgs e)
+        {
+            priceFilters[1] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void price2Checkbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            priceFilters[1] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void price3Checkbox_Checked(object sender, RoutedEventArgs e)
+        {
+            priceFilters[2] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void price3Checkbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            priceFilters[2] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void price4Checkbox_Checked(object sender, RoutedEventArgs e)
+        {
+            priceFilters[3] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void price4Checkbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            priceFilters[3] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void creditcardCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[0] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void creditcardCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[0] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void reservationCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[1] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void reservationCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[1] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void wheelchairCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[2] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void wheelchairCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[2] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void outdoorCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[3] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void outdoorCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[3] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void goodForKidsCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[4] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void goodForKidsCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[4] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void goodForGroupsCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[5] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void goodForGroupsCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[5] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void deliveryCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[6] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void deliveryCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[6] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void takeOutCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[7] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void takeOutCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[7] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void freeWifiCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[8] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void freeWifiCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[8] = false;
+            SearchButton_Click(sender, e);
+        }
+
+        private void bikeParkingCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[9] = true;
+            SearchButton_Click(sender, e);
+        }
+
+        private void bikeParkingCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            attributeFilters[9] = false;
             SearchButton_Click(sender, e);
         }
     }

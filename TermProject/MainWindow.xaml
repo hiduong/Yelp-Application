@@ -15,40 +15,67 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="35*"/>
             <ColumnDefinition Width="67*"/>
-            <ColumnDefinition Width="357*"/>
+            <ColumnDefinition Width="356*"/>
             <ColumnDefinition Width="290*"/>
-            <ColumnDefinition Width="444*"/>
+            <ColumnDefinition Width="348*"/>
+            <ColumnDefinition Width="97*"/>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="StateList" HorizontalAlignment="Left" Margin="17.667,-62,0,0" VerticalAlignment="Top" Width="128" Height="22" Grid.Column="1" SelectionChanged="StateList_SelectionChanged_1" Grid.ColumnSpan="2"/>
-        <ListBox x:Name="ZipcodeListBox" HorizontalAlignment="Left" Height="75" Margin="18,76.333,0,0" VerticalAlignment="Top" Width="163" Grid.Row="1" Grid.ColumnSpan="3" SelectionChanged="ZipcodeListBox_SelectionChanged"/>
-        <Label x:Name="SelectLocationLabel" Content="Select Location" HorizontalAlignment="Right" Margin="0,-92,334.333,118.667" VerticalAlignment="Bottom" Height="26" Width="119" FontSize="14" FontFamily="Arial" FontWeight="Bold" Grid.ColumnSpan="3"/>
+        <ComboBox x:Name="StateList" HorizontalAlignment="Left" Margin="18,-62,0,0" VerticalAlignment="Top" Width="128" Height="22" Grid.Column="1" SelectionChanged="StateList_SelectionChanged_1" Grid.ColumnSpan="2"/>
+        <ListBox x:Name="ZipcodeListBox" HorizontalAlignment="Left" Height="75" Margin="18,76,0,0" VerticalAlignment="Top" Width="163" Grid.Row="1" Grid.ColumnSpan="3" SelectionChanged="ZipcodeListBox_SelectionChanged"/>
+        <Label x:Name="SelectLocationLabel" Content="Select Location" HorizontalAlignment="Right" Margin="0,-92,334,119" VerticalAlignment="Bottom" Height="26" Width="119" FontSize="14" FontFamily="Arial" FontWeight="Bold" Grid.ColumnSpan="3"/>
         <Label x:Name="StateLabel" Content="State" HorizontalAlignment="Left" Margin="10,-65,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="14" Grid.ColumnSpan="2"/>
         <Label x:Name="CityLabel" Content="City" HorizontalAlignment="Left" Margin="10,-37,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="14" Grid.ColumnSpan="2"/>
-        <Label x:Name="ZipcodeLabel" Content="Zipcode" HorizontalAlignment="Left" Margin="12,48.333,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="14" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <Label x:Name="CategoriesLabel" Content="Business Category" HorizontalAlignment="Left" Margin="12,153.333,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="14" Grid.Row="1" Grid.ColumnSpan="3"/>
-        <ListBox x:Name="CategoryListBox" HorizontalAlignment="Left" Height="129" Margin="17,182.333,0,0" VerticalAlignment="Top" Width="163" Grid.Row="1" Grid.ColumnSpan="3"/>
-        <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Left" Margin="17,317.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="AddButton_Click"/>
-        <Button x:Name="SearchButton" Content="Search Business" HorizontalAlignment="Left" Margin="17,465.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="163" Grid.ColumnSpan="3" Click="SearchButton_Click"/>
-        <Button x:Name="RemoveButton" Content="Remove" Grid.Column="2" Margin="1.657,317.333,0,0" Grid.Row="1" VerticalAlignment="Top" Click="RemoveButton_Click" HorizontalAlignment="Left" Width="75"/>
-        <ListBox x:Name="AddedListBox" HorizontalAlignment="Left" Height="105" Margin="17,352.333,0,0" VerticalAlignment="Top" Width="163" Grid.Row="1" Grid.ColumnSpan="3"/>
-        <Label x:Name="SearchResultLabel" Content="SearchResult" HorizontalAlignment="Right" Margin="0,-94,140.333,120.667" VerticalAlignment="Bottom" Height="26" Width="119" FontSize="16" FontFamily="Arial" FontWeight="Bold" Grid.Column="2"/>
-        <DataGrid x:Name="ResultsGrid" Grid.Column="2" HorizontalAlignment="Left" Height="358" Margin="99.657,-52,0,0" VerticalAlignment="Top" Width="808" Grid.ColumnSpan="3" Grid.RowSpan="2" SelectionChanged="ResultsGrid_SelectionChanged"/>
-        <ListBox x:Name="CityBox" Grid.ColumnSpan="3" Margin="18,-12,0,467.667" Grid.RowSpan="2" SelectionChanged="CityBox_SelectionChanged" HorizontalAlignment="Left" Width="165"/>
-        <ListBox x:Name="UserIDBox" Grid.Column="2" HorizontalAlignment="Left" Height="126" Margin="99.657,329.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="231"/>
-        <TextBox x:Name="SearchUserBox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="98.657,298.333,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontFamily="Arial" FontSize="14" FontWeight="Bold" TextChanged="textChangedEventHandler"/>
-        <Button x:Name="SetUserButton" Content="Set User" Grid.Column="2" HorizontalAlignment="Left" Margin="99.657,465.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="232" Height="20" Click="SetUserButton_Click"/>
-        <Label x:Name="SetUserLabel" Content="Set Current User" Grid.Column="2" HorizontalAlignment="Left" Margin="93.657,269.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="CurrentUserLabel" Content="Current User :" Grid.Column="2" HorizontalAlignment="Left" Margin="340.657,271.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Arial" FontSize="14" Grid.ColumnSpan="2"/>
-        <Label x:Name="CurrentUserName" Content="Mary" Grid.Column="2" HorizontalAlignment="Left" Margin="340.657,299.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="206" Grid.ColumnSpan="2"/>
-        <Label x:Name="CurrentUserID" Content="he7YBVPGxkIK40zZm_Gh2w" Grid.Column="2" HorizontalAlignment="Left" Margin="341.657,329.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="206" Grid.ColumnSpan="2"/>
-        <Button x:Name="ViewUserInfo" Content="View User Information" Grid.Column="2" HorizontalAlignment="Left" Margin="345.657,360.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="205" Grid.ColumnSpan="2" Height="25" Click="ViewUserInfo_Click"/>
-        <ComboBox x:Name="businessSortComboBox" Grid.Column="4" HorizontalAlignment="Left" Margin="290,288,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" Height="33" SelectionChanged="businessSortComboBox_SelectionChanged"/>
-        <Label x:Name="SearchResultLabel_Copy" Content="Sort By" HorizontalAlignment="Right" Margin="0,0,35,240" VerticalAlignment="Bottom" Height="26" Width="119" FontSize="16" FontFamily="Arial" FontWeight="Bold" Grid.Column="4" Grid.Row="1"/>
+        <Label x:Name="ZipcodeLabel" Content="Zipcode" HorizontalAlignment="Left" Margin="12,48,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="14" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="CategoriesLabel" Content="Business Category" HorizontalAlignment="Left" Margin="12,153,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="14" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <ListBox x:Name="CategoryListBox" HorizontalAlignment="Left" Height="129" Margin="17,182,0,0" VerticalAlignment="Top" Width="163" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Left" Margin="17,317,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="AddButton_Click"/>
+        <Button x:Name="SearchButton" Content="Search Business" HorizontalAlignment="Left" Margin="17,465,0,0" Grid.Row="1" VerticalAlignment="Top" Width="163" Grid.ColumnSpan="3" Click="SearchButton_Click"/>
+        <Button x:Name="RemoveButton" Content="Remove" Grid.Column="2" Margin="2,317,0,0" Grid.Row="1" VerticalAlignment="Top" Click="RemoveButton_Click" HorizontalAlignment="Left" Width="75"/>
+        <ListBox x:Name="AddedListBox" HorizontalAlignment="Left" Height="105" Margin="17,352,0,0" VerticalAlignment="Top" Width="163" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <Label x:Name="SearchResultLabel" Content="SearchResult" HorizontalAlignment="Right" Margin="0,-94,140,121" VerticalAlignment="Bottom" Height="26" Width="119" FontSize="16" FontFamily="Arial" FontWeight="Bold" Grid.Column="2"/>
+        <DataGrid x:Name="ResultsGrid" Grid.Column="2" HorizontalAlignment="Left" Height="358" Margin="100,-52,0,0" VerticalAlignment="Top" Width="808" Grid.ColumnSpan="3" Grid.RowSpan="2" SelectionChanged="ResultsGrid_SelectionChanged"/>
+        <ListBox x:Name="CityBox" Grid.ColumnSpan="3" Margin="18,-12,0,468" Grid.RowSpan="2" SelectionChanged="CityBox_SelectionChanged" HorizontalAlignment="Left" Width="165"/>
+        <ListBox x:Name="UserIDBox" Grid.Column="2" HorizontalAlignment="Left" Height="126" Margin="100,329,0,0" Grid.Row="1" VerticalAlignment="Top" Width="231"/>
+        <TextBox x:Name="SearchUserBox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="99,298,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontFamily="Arial" FontSize="14" FontWeight="Bold" TextChanged="textChangedEventHandler"/>
+        <Button x:Name="SetUserButton" Content="Set User" Grid.Column="2" HorizontalAlignment="Left" Margin="100,465,0,0" Grid.Row="1" VerticalAlignment="Top" Width="232" Height="20" Click="SetUserButton_Click"/>
+        <Label x:Name="SetUserLabel" Content="Set Current User" Grid.Column="2" HorizontalAlignment="Left" Margin="94,269,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="CurrentUserLabel" Content="Current User :" Grid.Column="2" HorizontalAlignment="Left" Margin="341,271,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Arial" FontSize="14" Grid.ColumnSpan="2"/>
+        <Label x:Name="CurrentUserName" Content="Mary" Grid.Column="2" HorizontalAlignment="Left" Margin="341,299,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="206" Grid.ColumnSpan="2"/>
+        <Label x:Name="CurrentUserID" Content="he7YBVPGxkIK40zZm_Gh2w" Grid.Column="2" HorizontalAlignment="Left" Margin="342,329,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="206" Grid.ColumnSpan="2"/>
+        <Button x:Name="ViewUserInfo" Content="View User Information" Grid.Column="2" HorizontalAlignment="Left" Margin="346,360,0,0" Grid.Row="1" VerticalAlignment="Top" Width="205" Grid.ColumnSpan="2" Height="25" Click="ViewUserInfo_Click"/>
+        <ComboBox x:Name="businessSortComboBox" Grid.Column="4" HorizontalAlignment="Left" Margin="290,288,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" Height="33" SelectionChanged="businessSortComboBox_SelectionChanged" Grid.ColumnSpan="2"/>
+        <Label x:Name="SearchResultLabel_Copy" Content="Sort By" HorizontalAlignment="Right" Margin="0,0,35,240" VerticalAlignment="Bottom" Height="26" Width="119" FontSize="16" FontFamily="Arial" FontWeight="Bold" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <ListBox x:Name="attributeListbox" Grid.Column="4" HorizontalAlignment="Left" Height="199" Margin="267,22,0,0" VerticalAlignment="Top" Width="166" Grid.Row="1" Grid.ColumnSpan="2">
+            <CheckBox x:Name="creditcardCheckbox" Content="Accepts Credit Cards" Checked="creditcardCheckbox_Checked" Unchecked="creditcardCheckbox_Unchecked"/>
+            <CheckBox x:Name="reservationCheckbox" Content="Takes Reservations" Checked="reservationCheckbox_Checked" Unchecked="reservationCheckbox_Unchecked"/>
+            <CheckBox x:Name="wheelchairCheckbox" Content="Wheelchair Accessible" Checked="wheelchairCheckbox_Checked" Unchecked="wheelchairCheckbox_Unchecked"/>
+            <CheckBox x:Name="outdoorCheckbox" Content="Outdoor Seating" Checked="outdoorCheckbox_Checked" Unchecked="outdoorCheckbox_Unchecked"/>
+            <CheckBox x:Name="goodForKidsCheckbox" Content="Good For Kids" Checked="goodForKidsCheckbox_Checked" Unchecked="goodForKidsCheckbox_Unchecked"/>
+            <CheckBox x:Name="goodForGroupsCheckbox" Content="Good For Groups" Checked="goodForGroupsCheckbox_Checked" Unchecked="goodForGroupsCheckbox_Unchecked"/>
+            <CheckBox x:Name="deliveryCheckbox" Content="Delivery" Checked="deliveryCheckbox_Checked" Unchecked="deliveryCheckbox_Unchecked"/>
+            <CheckBox x:Name="takeOutCheckbox" Content="TakeOut" Checked="takeOutCheckbox_Checked" Unchecked="takeOutCheckbox_Unchecked"/>
+            <CheckBox x:Name="freeWifiCheckbox" Content="Free Wifi" Checked="freeWifiCheckbox_Checked" Unchecked="freeWifiCheckbox_Unchecked"/>
+            <CheckBox x:Name="bikeParkingCheckbox" Content="Bike Parking" Checked="bikeParkingCheckbox_Checked" Unchecked="bikeParkingCheckbox_Unchecked"/>
+        </ListBox>
+        <ListBox x:Name="priceListBox" Grid.Column="4" HorizontalAlignment="Left" Height="85" Margin="267,-12,0,0" VerticalAlignment="Top" Width="69" Grid.RowSpan="2">
+            <CheckBox x:Name="price1Checkbox" Content="$" Checked="price1Checkbox_Checked" Unchecked="price1Checkbox_Unchecked"/>
+            <CheckBox x:Name="price2Checkbox" Content="$$" Checked="price2Checkbox_Checked" Unchecked="price2Checkbox_Unchecked"/>
+            <CheckBox x:Name="price3Checkbox" Content="$$$" Checked="price3Checkbox_Checked" Unchecked="price3Checkbox_Unchecked"/>
+            <CheckBox x:Name="price4Checkbox" Content="$$$$" Checked="price4Checkbox_Checked" Unchecked="price4Checkbox_Unchecked"/>
+        </ListBox>
+        <ListBox x:Name="mealListBox" Grid.Column="4" HorizontalAlignment="Left" Height="125" Margin="337,-52,0,0" VerticalAlignment="Top" Width="97" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <CheckBox x:Name="breakfastCheckbox" Content="Breakfast"/>
+            <CheckBox x:Name="lunchCheckbox" Content="Lunch"/>
+            <CheckBox x:Name="brunchCheckbox" Content="Brunch"/>
+            <CheckBox x:Name="dinnerCheckbox" Content="Dinner"/>
+            <CheckBox x:Name="dessertCheckbox" Content="Dessert"/>
+            <CheckBox x:Name="lateNightCheckbox" Content="Late Night"/>
+        </ListBox>
 
     </Grid>
 </Window>
