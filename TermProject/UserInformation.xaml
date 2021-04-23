@@ -42,7 +42,7 @@
         <TextBox x:Name="LongBox" HorizontalAlignment="Left" Height="19" Margin="85,222,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="145"/>
         <Button x:Name="Update" Content="Update" HorizontalAlignment="Left" Margin="16,249,0,0" VerticalAlignment="Top" Width="216" Click="Update_Click"/>
         <DataGrid x:Name="FriendsDataGrid" HorizontalAlignment="Left" Margin="14,305,0,12.667" Width="377"/>
-        <DataGrid x:Name="FriendsLatestTipsDataGrid" HorizontalAlignment="Left" Margin="400,37,0,12.667" Width="677"/>
+        <DataGrid x:Name="FriendsLatestTipsDataGrid" HorizontalAlignment="Left" Margin="400,37,0,12.667" Width="676" HorizontalScrollBarVisibility="Visible"/>
         <Label x:Name="FriendsLabel" Content="Friends :" HorizontalAlignment="Left" Margin="13,276,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
         <Label x:Name="FriendsLatestTips" Content="Latest tips of my friends?" HorizontalAlignment="Left" Margin="396,10,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold" Width="557"/>
 

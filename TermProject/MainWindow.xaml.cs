@@ -21,8 +21,8 @@ namespace TermProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string currentUserName = "Mary";
-        private string currentUserID = "he7YBVPGxkIK40zZm_Gh2w";
+        private string currentUserName = "Lee Ann";
+        private string currentUserID = "FgQCX3ztjhellw2hyRedxg";
 
         private bool[] priceFilters;
         private bool[] attributeFilters;
