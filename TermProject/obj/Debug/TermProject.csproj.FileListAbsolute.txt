@@ -122,3 +122,5 @@ D:\Cpts 451 Project Milestone 3 Repo\cs451\TermProject\obj\Debug\TermProject.csp
 D:\Cpts 451 Project Milestone 3 Repo\cs451\TermProject\obj\Debug\TermProject.csproj.CopyComplete
 C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\Checkins.g.cs
 C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\Checkins.baml
+D:\Cpts 451 Project Milestone 3 Repo\cs451\TermProject\obj\Debug\Checkins.g.cs
+D:\Cpts 451 Project Milestone 3 Repo\cs451\TermProject\obj\Debug\Checkins.baml

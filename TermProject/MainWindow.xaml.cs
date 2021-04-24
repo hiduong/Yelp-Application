@@ -67,7 +67,7 @@ namespace TermProject
 
         private string buildConnectionString()
         {
-            return "Host = localhost; Username = postgres; Database = yelpdb2; password=11587750";
+            return "Host = localhost; Username = postgres; Database = yelpdbA; password=Potass1osql; timeout=360; commandTimeout=360;";
         }
 
         private void executeQuery(string sqlstr, Action<NpgsqlDataReader> myf)
@@ -292,7 +292,7 @@ namespace TermProject
                     //Euclidean
                     //string sqlstr = "SELECT distinct business.businessname, address, city, state, zipcode, ROUND(CAST(SQRT(POWER((business.latitude - my_user.latitude) * 69.2, 2) + POWER((business.longitude - my_user.longitude) * 69.2, 2)) as numeric), 3) as distance, rating, tipcount, checkincount, business.business_id FROM (SELECT distinct businessname, array_to_string(array_agg(categoryname), ' , ') AS categories FROM(SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id = hascategory.business_id GROUP BY businessname) temp1, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, business WHERE temp1.businessname = business.businessname AND city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "' AND " + categoryquery;
                     //Haversine
-                    string sqlstr = "SELECT distinct business.businessname, address, city, state, zipcode, ROUND(CAST(3958.8 * 2.0 * ASIN(SQRT(POWER(SIN(RADIANS(business.latitude - my_user.latitude) / 2.0), 2) + COS(RADIANS(business.latitude)) * COS(RADIANS(my_user.latitude)) * POWER(SIN(RADIANS(business.longitude - my_user.longitude) / 2.0), 2))) as numeric), 3) as distance, rating, tipcount, checkincount, business.business_id FROM (SELECT distinct businessname, array_to_string(array_agg(categoryname), ' , ') AS categories FROM(SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id = hascategory.business_id GROUP BY businessname) temp1, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, business WHERE temp1.businessname = business.businessname AND city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "' AND " + categoryquery + getAttributeSelections(true) + " " + getBusinessSort(true);
+                    string sqlstr = "SELECT * FROM (SELECT distinct business.businessname, address, city, state, zipcode, ROUND(CAST(3958.8 * 2.0 * ASIN(SQRT(POWER(SIN(RADIANS(business.latitude - my_user.latitude) / 2.0), 2) + COS(RADIANS(business.latitude)) * COS(RADIANS(my_user.latitude)) * POWER(SIN(RADIANS(business.longitude - my_user.longitude) / 2.0), 2))) as numeric), 3) as distance, rating, tipcount, checkincount, business.business_id FROM (SELECT distinct businessname, array_to_string(array_agg(categoryname), ' , ') AS categories FROM(SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, hascategory WHERE temp.business_id = hascategory.business_id GROUP BY businessname) temp1, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, business WHERE temp1.businessname = business.businessname AND city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "' AND " + categoryquery + " " + getBusinessSort(true) + ") as categorized" + getAttributeSelections(true);
                     executeQuery(sqlstr, AddGridRow);
                 }
                 else
@@ -300,7 +300,8 @@ namespace TermProject
                     //Euclidean
                     //string sqlstr = "SELECT distinct businessname, address, city, state, zipcode, ROUND(CAST(SQRT(POWER((temp.latitude - my_user.latitude) * 69.2, 2) + POWER((temp.longitude - my_user.longitude) * 69.2, 2)) as numeric), 3) as distance, rating, tipcount, checkincount, temp.business_id FROM (SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, hascategory WHERE temp.business_id=hascategory.business_id";
                     //Haversine
-                    string sqlstr = "SELECT distinct businessname, address, city, state, zipcode, ROUND(CAST(3958.8 * 2.0 * ASIN(SQRT(POWER(SIN(RADIANS(temp.latitude - my_user.latitude) / 2.0), 2) + COS(RADIANS(temp.latitude)) * COS(RADIANS(my_user.latitude)) * POWER(SIN(RADIANS(temp.longitude - my_user.longitude) / 2.0), 2))) as numeric), 3) as distance, rating, tipcount, checkincount, temp.business_id FROM (SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, hascategory WHERE temp.business_id=hascategory.business_id" + getAttributeSelections(false) + " " + getBusinessSort(false);
+                    string sqlstr = "SELECT * FROM (SELECT distinct businessname, address, city, state, zipcode, ROUND(CAST(3958.8 * 2.0 * ASIN(SQRT(POWER(SIN(RADIANS(temp.latitude - my_user.latitude) / 2.0), 2) + COS(RADIANS(temp.latitude)) * COS(RADIANS(my_user.latitude)) * POWER(SIN(RADIANS(temp.longitude - my_user.longitude) / 2.0), 2))) as numeric), 3) as distance, rating, tipcount, checkincount, temp.business_id FROM (SELECT distinct * FROM business WHERE city = '" + CityBox.SelectedItem.ToString() + "' AND state = '" + StateList.SelectedItem.ToString() + "' AND zipcode = '" + ZipcodeListBox.SelectedItem.ToString() + "') temp, (SELECT latitude, longitude FROM yelpuser WHERE username = '" + currentUserName + "' AND user_id = '" + currentUserID + "') my_user, hascategory WHERE temp.business_id=hascategory.business_id" + " " + getBusinessSort(false) + ") as categorized" + getAttributeSelections(false);
+                    //System.Windows.MessageBox.Show(sqlstr);
                     executeQuery(sqlstr, AddGridRow);
                 }
             }
@@ -437,20 +438,18 @@ namespace TermProject
 
         private string getAttributeSelections(bool categoryQuery)
         {
-            string result = " AND ";
+            string result = " WHERE ";
 
             string businessRef;
 
             if (categoryQuery)
             {
-                businessRef = "business.business_id";
+                businessRef = "business_id";
             }
             else
             {
-                businessRef = "temp.business_id";
+                businessRef = "business_id";
             }
-
-            result += businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributename = ";
 
             bool hasAttributeFilter = false;
 
@@ -464,20 +463,23 @@ namespace TermProject
                     if (hasAttributeFilter)
                     {
                         result += " GROUP BY business_id) AND " + businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributename = ";
+                    } else
+                    {
+                        result += businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributename = ";
                     }
                     switch (index)
                     {
                         case 0:
-                            result += "'RestaurantsPriceRange1'";
+                            result += "'RestaurantsPriceRange2' AND attributevalue = '1'";
                             break;
                         case 1:
-                            result += "'RestaurantsPriceRange2'";
+                            result += "'RestaurantsPriceRange2' AND attributevalue = '2'";
                             break;
                         case 2:
-                            result += "'RestaurantsPriceRange3'";
+                            result += "'RestaurantsPriceRange3' AND attributevalue = '3'";
                             break;
                         case 3:
-                            result += "'RestaurantsPriceRange4'";
+                            result += "'RestaurantsPriceRange4' AND attributevalue = '4'";
                             break;
                     }
                     hasAttributeFilter = true;
@@ -489,9 +491,17 @@ namespace TermProject
             {
                 if (b)
                 {
+                    string attributeTrueVal = "'True'";
+                    if (index == 8)
+                    {
+                        attributeTrueVal = "'free'";
+                    }
                     if (hasAttributeFilter)
                     {
-                        result += " GROUP BY business_id) AND " + businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributename = ";
+                        result += " GROUP BY business_id) AND " + businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributevalue = " + attributeTrueVal + " AND attributename = ";
+                    } else
+                    {
+                        result += businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributevalue = " + attributeTrueVal + " AND attributename = ";
                     }
                     switch (index)
                     {
@@ -537,7 +547,10 @@ namespace TermProject
                 {
                     if (hasAttributeFilter)
                     {
-                        result += " GROUP BY business_id) AND " + businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributename = ";
+                        result += " GROUP BY business_id) AND " + businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributevalue = 'True' AND attributename = ";
+                    } else
+                    {
+                        result += businessRef + " IN (SELECT business_id FROM business NATURAL JOIN attribute WHERE attributevalue = 'True' AND attributename = ";
                     }
                     switch (index)
                     {
@@ -571,6 +584,8 @@ namespace TermProject
             }
 
             result += " GROUP BY business_id)";
+
+            //System.Windows.MessageBox.Show(result);
 
             return result;
 
