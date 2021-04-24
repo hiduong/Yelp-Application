@@ -120,3 +120,5 @@ D:\Cpts 451 Project Milestone 3 Repo\cs451\TermProject\obj\Debug\TermProject.Pro
 D:\Cpts 451 Project Milestone 3 Repo\cs451\TermProject\obj\Debug\TermProject.csproj.GenerateResource.cache
 D:\Cpts 451 Project Milestone 3 Repo\cs451\TermProject\obj\Debug\TermProject.csproj.CoreCompileInputs.cache
 D:\Cpts 451 Project Milestone 3 Repo\cs451\TermProject\obj\Debug\TermProject.csproj.CopyComplete
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\Checkins.g.cs
+C:\Users\GGHyper\Desktop\cs451\TermProject\obj\Debug\Checkins.baml

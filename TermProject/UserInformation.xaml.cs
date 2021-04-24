@@ -84,7 +84,7 @@ namespace TermProject
 
         private string buildConnectionString()
         {
-            return "Host = localhost; Username = postgres; Database = yelpdbA; password=Potass1osql";
+            return "Host = localhost; Username = postgres; Database = yelpdb2; password=11587750";
         }
 
         private void executeQuery(string sqlstr, Action<NpgsqlDataReader> myf)
@@ -191,9 +191,9 @@ namespace TermProject
         // Execute query with AddFriendsHelper
         private void AddFriends()
         {
-            string sqlstr = "SELECT friend.username, friend.tiplikecount, friend.averagestars, friend.joindate FROM friendship INNER JOIN yelpuser friender ON friender.user_id = friender_id INNER JOIN yelpuser friend ON friend.user_id = friend_id WHERE friender.user_id = '" + uid + "\'" ;
+            string sqlstr = "SELECT friend.username, friend.tiplikecount, friend.averagestars, friend.joindate FROM friendship INNER JOIN yelpuser friender ON friender.user_id = friender_id INNER JOIN yelpuser friend ON friend.user_id = friend_id WHERE friender.user_id = '" + uid + "\'";
             executeQuery(sqlstr, AddFriendsHelper);
-            
+
         }
 
         // TODO: Imeplement method that populates the friends latest tips data grid with the query results
@@ -237,7 +237,12 @@ namespace TermProject
         // TODO : Update the table to include the new lat and long
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-
+            double temp = 0.0;
+            if (double.TryParse(LongBox.Text, out temp) == true && double.TryParse(LatBox.Text, out temp) == true)
+            {
+                string sqlstr = "UPDATE yelpuser SET latitude = '" + LatBox.Text + "', longitude = '" + LongBox.Text + "' WHERE user_id ='" + this.uid + "'";
+                executeQuery(sqlstr, null);
+            }
         }
     }
 }

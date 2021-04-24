@@ -23,6 +23,8 @@ namespace TermProject
     {
         private string currentUserName = "Lee Ann";
         private string currentUserID = "FgQCX3ztjhellw2hyRedxg";
+        private string DayOfWeek = "";
+        private string[] DoW = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
 
         private bool[] priceFilters;
         private bool[] attributeFilters;
@@ -42,12 +44,18 @@ namespace TermProject
             public string checkincount { get; set; }
         }
 
+        private Business selectedBusiness = null;
+
         public MainWindow()
         {
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             AddState();
             AddColumns2Grid();
             populateSortMethods();
+
+            int weekday = (int)DateTime.Today.DayOfWeek;
+            this.DayOfWeek = this.DoW[weekday];
 
             priceFilters = new bool[4];
             initBoolsFalse(priceFilters);
@@ -59,7 +67,7 @@ namespace TermProject
 
         private string buildConnectionString()
         {
-            return "Host = localhost; Username = postgres; Database = yelpdbA; password=Potass1osql";
+            return "Host = localhost; Username = postgres; Database = yelpdb2; password=11587750";
         }
 
         private void executeQuery(string sqlstr, Action<NpgsqlDataReader> myf)
@@ -247,10 +255,10 @@ namespace TermProject
         {
             if (CategoryListBox.SelectedIndex > -1)
             {
-                if(AddedListBox.Items.Contains(CategoryListBox.SelectedItem.ToString()) == true)
+                if (AddedListBox.Items.Contains(CategoryListBox.SelectedItem.ToString()) == true)
                 {
                     AddedListBox.Items.Remove(CategoryListBox.SelectedItem.ToString());
-                }        
+                }
             }
         }
 
@@ -268,7 +276,7 @@ namespace TermProject
                 if (AddedListBox.Items.Count > 0)
                 {
                     string temp = "";
-                    foreach(string s in AddedListBox.Items)
+                    foreach (string s in AddedListBox.Items)
                     {
                         if (s.Contains("'") == true)
                         {
@@ -298,17 +306,27 @@ namespace TermProject
             }
         }
 
+        private void SetHours(NpgsqlDataReader R)
+        {
+            SelectedBusinessHours.Content = "Today(" + this.DayOfWeek + "):      Opens:" + R.GetTimeSpan(0) + "      Closes:" + R.GetTimeSpan(1);
+        }
+
         private void ResultsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ResultsGrid.SelectedIndex > -1)
             {
-                Business B = ResultsGrid.Items[ResultsGrid.SelectedIndex] as Business;
-                if ((B.bid != null) && (B.bid.ToString().CompareTo("") != 0))
-                {
-                    Tips tipsWindow = new Tips(B.bid.ToString(), B.name.ToString(), this.currentUserID);
-                    tipsWindow.Show();
-                    ResultsGrid.SelectedIndex = -1;
-                }
+                this.selectedBusiness = ResultsGrid.Items[ResultsGrid.SelectedIndex] as Business;
+                SelectedBusinessName.Content = this.selectedBusiness.name;
+                SelectedBusinessAddress.Content = this.selectedBusiness.address + ", " + this.selectedBusiness.city + ", " + this.selectedBusiness.state;
+                string sqlstr = "SELECT openingtime, closingtime FROM businesshours Where business_id = '" + this.selectedBusiness.bid + "' and weekday = '" + this.DayOfWeek + "'";
+                executeQuery(sqlstr, SetHours);
+            }
+            else
+            {
+                this.selectedBusiness = null;
+                SelectedBusinessName.Content = "";
+                SelectedBusinessAddress.Content = "";
+                SelectedBusinessHours.Content = "";
             }
         }
 
@@ -342,6 +360,7 @@ namespace TermProject
         private void ViewUserInfo_Click(object sender, RoutedEventArgs e)
         {
             UserInformation UserWindow = new UserInformation(this.currentUserID);
+            UserWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             UserWindow.Show();
         }
 
@@ -354,22 +373,6 @@ namespace TermProject
             businessSortComboBox.Items.Add("Nearest");
 
             businessSortComboBox.SelectedValue = "Business Name";
-        }
-
-        private string getPriceFilters()
-        {
-            //Check through tick boxes and append a WHERE condition for each ticked
-            return "";
-        }
-
-        private string getAttributeFilters()
-        {
-            return "";
-        }
-
-        private string getMealFilters()
-        {
-            return "";
         }
 
         private string getBusinessSort(bool categoryQuery)
@@ -387,7 +390,8 @@ namespace TermProject
                     if (categoryQuery)
                     {
                         result += "business.businessname ASC";
-                    } else
+                    }
+                    else
                     {
                         result += "businessname ASC";
                     }
@@ -425,7 +429,7 @@ namespace TermProject
 
         private static void initBoolsFalse(bool[] boolArr)
         {
-            for(int i = 0; i < boolArr.Length; i++)
+            for (int i = 0; i < boolArr.Length; i++)
             {
                 boolArr[i] = false;
             }
@@ -440,7 +444,8 @@ namespace TermProject
             if (categoryQuery)
             {
                 businessRef = "business.business_id";
-            } else
+            }
+            else
             {
                 businessRef = "temp.business_id";
             }
@@ -566,7 +571,7 @@ namespace TermProject
             }
 
             result += " GROUP BY business_id)";
-            
+
             return result;
 
         }
@@ -810,6 +815,26 @@ namespace TermProject
         {
             mealFilters[5] = false;
             SearchButton_Click(sender, e);
+        }
+
+        private void ShowTipsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.selectedBusiness != null)
+            {
+                Tips tipsWindow = new Tips(this.selectedBusiness.bid.ToString(), this.selectedBusiness.name.ToString(), this.currentUserID);
+                tipsWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                tipsWindow.Show();
+            }
+        }
+
+        private void ShowCheckinsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.selectedBusiness != null)
+            {
+                Checkins checkinsWindow = new Checkins(this.selectedBusiness.bid.ToString(), this.selectedBusiness.name.ToString(), this.currentUserID);
+                checkinsWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                checkinsWindow.Show();
+            }
         }
     }
 }

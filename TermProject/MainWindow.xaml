@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TermProject"
+        ResizeMode="NoResize"
         mc:Ignorable="d"
         Title="YelpApp" Height="700
         " Width="1200" Background="#FFD77E7E">
@@ -39,18 +40,18 @@
         <Button x:Name="RemoveButton" Content="Remove" Grid.Column="2" Margin="2,317,0,0" Grid.Row="1" VerticalAlignment="Top" Click="RemoveButton_Click" HorizontalAlignment="Left" Width="75"/>
         <ListBox x:Name="AddedListBox" HorizontalAlignment="Left" Height="105" Margin="17,352,0,0" VerticalAlignment="Top" Width="163" Grid.Row="1" Grid.ColumnSpan="3"/>
         <Label x:Name="SearchResultLabel" Content="SearchResult" HorizontalAlignment="Right" Margin="0,-94,140,121" VerticalAlignment="Bottom" Height="26" Width="119" FontSize="16" FontFamily="Arial" FontWeight="Bold" Grid.Column="2"/>
-        <DataGrid x:Name="ResultsGrid" Grid.Column="2" HorizontalAlignment="Left" Height="358" Margin="100,-52,0,0" VerticalAlignment="Top" Width="808" Grid.ColumnSpan="3" Grid.RowSpan="2" SelectionChanged="ResultsGrid_SelectionChanged"/>
+        <DataGrid x:Name="ResultsGrid" Grid.Column="2" HorizontalAlignment="Left" Height="358" Margin="100,-52,0,0" VerticalAlignment="Top" Width="808" Grid.ColumnSpan="3" Grid.RowSpan="2" SelectionChanged="ResultsGrid_SelectionChanged" IsReadOnly="True"/>
         <ListBox x:Name="CityBox" Grid.ColumnSpan="3" Margin="18,-12,0,468" Grid.RowSpan="2" SelectionChanged="CityBox_SelectionChanged" HorizontalAlignment="Left" Width="165"/>
         <ListBox x:Name="UserIDBox" Grid.Column="2" HorizontalAlignment="Left" Height="126" Margin="100,329,0,0" Grid.Row="1" VerticalAlignment="Top" Width="231"/>
         <TextBox x:Name="SearchUserBox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="99,298,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontFamily="Arial" FontSize="14" FontWeight="Bold" TextChanged="textChangedEventHandler"/>
         <Button x:Name="SetUserButton" Content="Set User" Grid.Column="2" HorizontalAlignment="Left" Margin="100,465,0,0" Grid.Row="1" VerticalAlignment="Top" Width="232" Height="20" Click="SetUserButton_Click"/>
         <Label x:Name="SetUserLabel" Content="Set Current User" Grid.Column="2" HorizontalAlignment="Left" Margin="94,269,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="CurrentUserLabel" Content="Current User :" Grid.Column="2" HorizontalAlignment="Left" Margin="341,271,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Arial" FontSize="14" Grid.ColumnSpan="2"/>
-        <Label x:Name="CurrentUserName" Content="Mary" Grid.Column="2" HorizontalAlignment="Left" Margin="341,299,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="206" Grid.ColumnSpan="2"/>
-        <Label x:Name="CurrentUserID" Content="he7YBVPGxkIK40zZm_Gh2w" Grid.Column="2" HorizontalAlignment="Left" Margin="342,329,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="206" Grid.ColumnSpan="2"/>
-        <Button x:Name="ViewUserInfo" Content="View User Information" Grid.Column="2" HorizontalAlignment="Left" Margin="346,360,0,0" Grid.Row="1" VerticalAlignment="Top" Width="205" Grid.ColumnSpan="2" Height="25" Click="ViewUserInfo_Click"/>
-        <ComboBox x:Name="businessSortComboBox" Grid.Column="4" HorizontalAlignment="Left" Margin="290,288,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" Height="33" SelectionChanged="businessSortComboBox_SelectionChanged" Grid.ColumnSpan="3"/>
-        <Label x:Name="SearchResultLabel_Copy" Content="Sort By" HorizontalAlignment="Right" Margin="0,0,35,240" VerticalAlignment="Bottom" Height="26" Width="119" FontSize="16" FontFamily="Arial" FontWeight="Bold" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <Label x:Name="CurrentUserLabel" Content="Current User :" Grid.Column="2" HorizontalAlignment="Left" Margin="333.657,271.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Arial" FontSize="14" Grid.ColumnSpan="2"/>
+        <Label x:Name="CurrentUserName" Content="Lee Ann" Grid.Column="2" HorizontalAlignment="Left" Margin="341.657,300.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="207" Grid.ColumnSpan="2" Background="#FFFFFDFD"/>
+        <Label x:Name="CurrentUserID" Content="FgQCX3ztjhellw2hyRedxg" Grid.Column="2" HorizontalAlignment="Left" Margin="341.657,334.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="207" Grid.ColumnSpan="2" Background="White"/>
+        <Button x:Name="ViewUserInfo" Content="View User Information" Grid.Column="2" HorizontalAlignment="Left" Margin="340.657,367.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="209" Grid.ColumnSpan="2" Height="25" Click="ViewUserInfo_Click"/>
+        <ComboBox x:Name="businessSortComboBox" Grid.Column="4" Margin="312.255,258.333,0,0" Grid.Row="1" VerticalAlignment="Top" Height="27" SelectionChanged="businessSortComboBox_SelectionChanged" Grid.ColumnSpan="3" HorizontalAlignment="Left" Width="122"/>
+        <Label x:Name="SearchResultLabel_Copy" Content="Sort By" HorizontalAlignment="Right" Margin="0,0,-41.324,262.667" VerticalAlignment="Bottom" Height="30" Width="119" FontSize="16" FontFamily="Arial" FontWeight="Bold" Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="6"/>
         <ListBox x:Name="attributeListbox" Grid.Column="4" HorizontalAlignment="Left" Height="199" Margin="267,22,0,0" VerticalAlignment="Top" Width="166" Grid.Row="1" Grid.ColumnSpan="3">
             <CheckBox x:Name="creditcardCheckbox" Content="Accepts Credit Cards" Checked="creditcardCheckbox_Checked" Unchecked="creditcardCheckbox_Unchecked"/>
             <CheckBox x:Name="reservationCheckbox" Content="Takes Reservations" Checked="reservationCheckbox_Checked" Unchecked="reservationCheckbox_Unchecked"/>
@@ -77,6 +78,12 @@
             <CheckBox x:Name="dessertCheckbox" Content="Dessert" Checked="dessertCheckbox_Checked" Unchecked="dessertCheckbox_Unchecked"/>
             <CheckBox x:Name="lateNightCheckbox" Content="Late Night" Checked="lateNightCheckbox_Checked" Unchecked="lateNightCheckbox_Unchecked"/>
         </ListBox>
+        <Label x:Name="Selected_Business" Content="Selected Business :" Grid.Column="3" HorizontalAlignment="Left" Margin="200.657,271.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Arial" FontSize="14" Grid.ColumnSpan="2"/>
+        <Label x:Name="SelectedBusinessName" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="205.657,299.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="386" Background="#FFFFFDFD" Grid.ColumnSpan="2"/>
+        <Label x:Name="SelectedBusinessAddress" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="205.657,333.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="386" Background="#FFFFFDFD" Grid.ColumnSpan="2"/>
+        <Label x:Name="SelectedBusinessHours" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="205.657,368.333,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontFamily="Arial" FontWeight="Bold" Width="386" Background="#FFFFFDFD" Grid.ColumnSpan="2"/>
+        <Button x:Name="ShowCheckinsButton" Content="ShowCheckins" Grid.Column="3" HorizontalAlignment="Left" Margin="204.657,437.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="389" RenderTransformOrigin="0.742,0.113" Grid.ColumnSpan="2" Height="25" Click="ShowCheckinsButton_Click"/>
+        <Button x:Name="ShowTipsButton" Content="ShowTips" Grid.Column="3" HorizontalAlignment="Left" Margin="204.657,403.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="388" Grid.ColumnSpan="2" Height="25" Click="ShowTipsButton_Click"/>
 
     </Grid>
 </Window>

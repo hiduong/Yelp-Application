@@ -89,12 +89,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Checkins.xaml.cs">
+      <DependentUpon>Checkins.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tips.xaml.cs">
       <DependentUpon>Tips.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInformation.xaml.cs">
       <DependentUpon>UserInformation.xaml</DependentUpon>
     </Compile>
+    <Page Include="Checkins.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
