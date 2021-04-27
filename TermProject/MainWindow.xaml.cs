@@ -67,7 +67,7 @@ namespace TermProject
 
         private string buildConnectionString()
         {
-            return "Host = localhost; Username = postgres; Database = yelpdbA; password=Potass1osql; timeout=360; commandTimeout=360;";
+            return "Host = localhost; Username = postgres; Database = yelpdb2; password=11587750; timeout=360; commandTimeout=360;";
         }
 
         private void executeQuery(string sqlstr, Action<NpgsqlDataReader> myf)
@@ -312,6 +312,11 @@ namespace TermProject
             SelectedBusinessHours.Content = "Today(" + this.DayOfWeek + "):      Opens:" + R.GetTimeSpan(0) + "      Closes:" + R.GetTimeSpan(1);
         }
 
+        private void SetC(NpgsqlDataReader R)
+        {
+            categorytextbox.Text = categorytextbox.Text + "  " + R.GetString(0) + "\n";
+        }
+
         private void ResultsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ResultsGrid.SelectedIndex > -1)
@@ -321,6 +326,13 @@ namespace TermProject
                 SelectedBusinessAddress.Content = this.selectedBusiness.address + ", " + this.selectedBusiness.city + ", " + this.selectedBusiness.state;
                 string sqlstr = "SELECT openingtime, closingtime FROM businesshours Where business_id = '" + this.selectedBusiness.bid + "' and weekday = '" + this.DayOfWeek + "'";
                 executeQuery(sqlstr, SetHours);
+                categorytextbox.Text = "Categories:\n";
+                sqlstr = "select categoryname from hascategory where business_id = '" +this.selectedBusiness.bid+"'";
+                executeQuery(sqlstr, SetC);
+                categorytextbox.Text = categorytextbox.Text + "Attributes:\n";
+                sqlstr = "select attributename from attribute where business_id = '" + this.selectedBusiness.bid + "'";
+                executeQuery(sqlstr, SetC);
+
             }
             else
             {
@@ -328,6 +340,7 @@ namespace TermProject
                 SelectedBusinessName.Content = "";
                 SelectedBusinessAddress.Content = "";
                 SelectedBusinessHours.Content = "";
+                categorytextbox.Text = "";
             }
         }
 
